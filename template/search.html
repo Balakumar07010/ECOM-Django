@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <title>Card</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      font-family: "Poppins", serif;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .ulogin {
+      position: relative;
+    }
+
+    .ulogin .dropdown-menu {
+      position: absolute;
+      right: 0;
+      left: auto;
+      transform: translateY(10px);
+      z-index: 1050;
+      display: none;
+      top: 60px;
+      /* Initially hidden */
+      opacity: 0;
+      /* For smooth transition */
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .ulogin:hover .dropdown-menu {
+      display: block;
+      /* Show dropdown on hover */
+      opacity: 1;
+      transform: translateY(0);
+      /* Animate dropdown into place */
+    }
+
+    /* Navigation Start */
+    nav {
+      display: flex;
+      flex-direction: column;
+      background-color: #2f89fc;
+    }
+
+    .nav-container-first {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .logo {
+      width: 6rem;
+      border-radius: 50%;
+    }
+
+    .logo img {
+      width: 100%;
+      transition: all 0.6s;
+    }
+
+    .logo img:hover {
+      filter: drop-shadow(1px 1px 4px #fff);
+    }
+
+    .login {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .cart-logo {
+      width: 2.5rem;
+      transition: all 0.6s;
+    }
+
+    .cart-logo img {
+      width: 100%;
+    }
+
+    .login-btn button {
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.8rem;
+      color: #fff;
+      padding: 0.7rem 1.4rem;
+      background-color: #2f89fc;
+      transition: all 1s;
+    }
+
+    .cart-logo:hover {
+      filter: drop-shadow(1px 1px 4px #fff);
+    }
+
+    .login-btn button:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .searchbar {
+      width: 40%;
+      position: relative;
+    }
+
+    .searchbar input {
+      font-size: 1rem;
+      color: #757575;
+      width: 100%;
+      padding: 0.6rem 2.7rem 0.6rem 1.3rem;
+      border: none;
+      outline: none;
+      border-radius: 1.5rem;
+    }
+
+    .search_icon {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.58rem;
+      width: 1.7rem;
+    }
+
+    .search_icon img {
+      width: 100%;
+    }
+
+    .seller button {
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.8rem;
+      color: #fff;
+      padding: 0.5rem 1.4rem;
+      background-color: #2f89fc;
+      transition: all 1s;
+    }
+
+    .seller button:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .whole_content {
+      width: 100%;
+      display: flex;
+    }
+
+    .filter-container {
+      background-color: #d1d1d1;
+      padding: 20px;
+      width: 20%;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-left: 1rem;
+      margin-top: 15px;
+    }
+
+    .filter-container {
+      max-width: 300px;
+    }
+
+    @media (max-width: 767px) {
+      .filter-container {
+        width: 50%;
+        font-size: 0.5rem;
+      }
+    }
+
+    @media screen and (max-width: 1024px) and (min-width: 769px) {
+      .nav-container-first {
+        padding: 0rem 0.8rem;
+      }
+
+      .logo {
+        width: 5rem;
+      }
+
+      .login {
+        gap: 1.5rem;
+      }
+
+      .cart-logo {
+        width: 2.2rem;
+      }
+
+      .login-btn button {
+        font-size: 1rem;
+        padding: 0.5rem 0.8rem;
+      }
+
+      .nav-container-second {
+        gap: 5px;
+        padding: 0rem 0.8rem;
+      }
+
+      .searchbar {
+        width: 40%;
+      }
+
+      .searchbar input {
+        font-size: 0.9rem;
+        padding: 0.4rem 2.5rem 0.4rem 0.6rem;
+      }
+
+      .search_icon {
+        top: 0.2rem;
+        width: 1.5rem;
+      }
+
+      .seller button {
+        font-size: 1rem;
+        padding: 0.5rem 1.2rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) and (min-width: 481px) {
+      .nav-container-first {
+        padding: 0rem 0.6rem;
+      }
+
+      .logo {
+        width: 5rem;
+      }
+
+      .login {
+        gap: 1rem;
+      }
+
+      .cart-logo {
+        width: 1.8rem;
+      }
+
+      .login-btn button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .nav-container-second {
+        gap: 5px;
+        padding: 0rem 0.6rem;
+      }
+
+      .searchbar {
+        width: 40%;
+      }
+
+      .searchbar input {
+        font-size: 0.8rem;
+        padding: 0.35rem 2.5rem 0.35rem 0.6rem;
+      }
+
+      .search_icon {
+        top: 0.1rem;
+        width: 1.2rem;
+      }
+
+      .seller button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) and (min-width: 310px) {
+      .nav-container-first {
+        padding: 0rem 0.5rem;
+      }
+
+      .logo {
+        width: 3rem;
+      }
+
+      .login {
+        gap: 0.8rem;
+      }
+
+      .cart-logo {
+        width: 1.5rem;
+      }
+
+      .login-btn button {
+        font-size: 0.6rem;
+        padding: 0.4rem 0.6rem;
+      }
+
+      .nav-container-second {
+        gap: 5px;
+        padding: 0rem 0.5rem;
+      }
+
+      .searchbar {
+        width: 40%;
+      }
+
+      .searchbar input {
+        font-size: 0.7rem;
+        padding: 0.2rem 2.5rem 0.2rem 0.6rem;
+      }
+
+      .search_icon {
+        top: 0.1rem;
+        width: 1rem;
+      }
+
+      .seller button {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.4rem;
+      }
+    }
+
+    h2 {
+      margin: 0 0 10px;
+    }
+
+    .filter-section {
+      margin-bottom: 20px;
+    }
+
+    .filter-section p {
+      font-weight: bold;
+    }
+    .filter-section a {
+      text-decoration: none;
+      color: #2f89fc;
+
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    .price-range {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .button button {
+      margin-left: 100px;
+      width: 110px;
+      height: 30px;
+      background-color: rgba(65, 65, 254, 0.732);
+      color: black;
+    }
+
+    /* product style*/
+
+    /* Container styles */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      /* 4 cards per row */
+      gap: 1.5rem;
+      /* Space between cards */
+    }
+
+    /* Responsive design */
+    @media (max-width: 1200px) {
+      .product-grid {
+        grid-template-columns: repeat(3,
+            1fr);
+        /* 3 cards per row on large screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2,
+            1fr);
+        /* 2 cards per row on medium screens */
+      }
+    }
+
+    @media (max-width: 576px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+        /* 1 card per row on small screens */
+      }
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 0.6rem;
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      max-width: 280px;
+      max-height: 380px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Image styling */
+    /* Center the image at the top of the card */
+    .image-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      /* Center horizontally */
+      align-items: flex-start;
+      /* Align to the top vertically */
+      height: 180px;
+      /* Set a specific height to control the image placement */
+      width: 100%;
+    }
+
+    /* Image styling */
+    .product-image {
+      max-width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      /* Ensures the image covers the space without distortion */
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+
+    /* Title styling */
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 0.55rem;
+      text-align: start;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      /* Limits the title text to 2 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      /* Adds "..." at the end if the text overflows */
+    }
+
+
+    /* Description styling */
+    .product-sub {
+      text-align: start;
+      font-weight: normal;
+    }
+
+    .product-card .money p {
+      text-align: start;
+      font-size: 25px;
+      font-weight: bolder;
+      /* margin-top: -5px; */
+    }
+
+
+    .heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      display: block;
+      cursor: pointer;
+      transition: transform 100ms ease;
+    }
+
+    .heart input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      height: 2em;
+      width: 2em;
+      animation: dislike_effect 400ms ease;
+    }
+
+    .checkmark path {
+      stroke: #000;
+      /* Black border */
+      stroke-width: 10px;
+      /* Thickness of the border */
+      fill: none;
+      /* Transparent fill when unchecked */
+      transition: stroke 0.3s ease, fill 0.3s ease;
+    }
+
+    .heart input:checked~.checkmark path {
+      fill: #ff5353;
+      /* Heart fill color when checked */
+      stroke: #000;
+      /* Keeps the border black */
+      stroke-width: 2px;
+    }
+
+    .heart input:checked~.checkmark {
+      animation: like_effect 400ms ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.1);
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      color: #333;
+      margin-top: -12px;
+    }
+
+    .rating .star {
+      font-size: 1.5rem;
+      color: gold;
+      /* Gold color for the star */
+      margin-right: 0.5rem;
+    }
+
+    .rating .value {
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Two cards per row */
+        gap: 10px;
+        /* Space between cards */
+      }
+
+      .product-card {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .image-container img.product-image {
+        width: 100%;
+        /* Adjust image to fit container */
+        height: auto;
+        max-height: 150px;
+        /* Limit height for better scaling */
+        object-fit: cover;
+      }
+
+      .wishlist-btn,
+      .wishlist-unlike-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+      }
+
+      .product-title {
+        font-size: 14px;
+        /* Smaller font for titles */
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .product-sub {
+        font-size: 12px;
+        /* Smaller font for subtitle */
+        text-align: center;
+        color: #666;
+      }
+
+      .rating {
+        font-size: 12px;
+        /* Smaller font for rating */
+        text-align: center;
+      }
+
+      .rating .star {
+        font-size: 12px;
+        color: #ffd700;
+        /* Gold color for stars */
+      }
+
+      .money {
+        font-size: 14px;
+        /* Smaller font for price */
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .money p {
+        margin: 0;
+      }
+    }
+
+    /* Media query for tablet screens */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* Three cards per row */
+        gap: 15px;
+        /* Space between cards */
+      }
+
+      .product-card {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+      }
+
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .image-container img.product-image {
+        width: 100%;
+        /* Adjust image to fit container */
+        height: auto;
+        max-height: 200px;
+        /* Slightly larger images for tablets */
+        object-fit: cover;
+      }
+
+      .wishlist-btn,
+      .wishlist-unlike-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      .product-title {
+        font-size: 16px;
+        /* Slightly larger font for titles */
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .product-sub {
+        font-size: 14px;
+        /* Slightly larger font for subtitle */
+        text-align: center;
+        color: #666;
+      }
+
+      .rating {
+        font-size: 14px;
+        /* Slightly larger font for rating */
+        text-align: center;
+      }
+
+      .rating .star {
+        font-size: 14px;
+        color: #ffd700;
+        /* Gold color for stars */
+      }
+
+      .money {
+        font-size: 16px;
+        /* Slightly larger font for price */
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .money p {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  {% load static %}
+  <nav class="navbar navbar-expand-lg">
+    <div class="nav-container-first">
+      <div class="logo">
+        <a href="{% url 'homePage' %}">
+          <img src="{% static '/img/logo.png' %}" alt="logo" />
+        </a>
+      </div>
+      <form id="forms" method="post" action="{% url 'search' %}">
+        {%csrf_token%}
+        <div class="search d-flex align-items-center">
+          <input type="text" name="search" id="search" class="form-control me-2" placeholder="Search..." />
+          <button type="submit" class="searchBtn btn btn-outline-primary">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+      <div class="login">
+        <div class="seller">
+          <a href="{% url 'sellerLogin' %}">
+            <button type="submit">Become a Seller</button>
+          </a>
+        </div>
+        <div class="cart-logo">
+          <a href="{% url 'cartPage' %}">
+            <img src="{% static '/img/shopping-bag.png' %}" alt="cart-logo" />
+          </a>
+        </div>
+        {% if ob2.user_flag == 'true'%}
+        <div class="d-flex align-items-center">
+          <div>
+            <p style="color: #fff; font-size: 1.3rem">{{ob2.username}}</p>
+          </div>
+          <div class="ulogin dropdown position-relative d-flex align-items-center">
+            <button class="btn btn-link pl-3" style="cursor: pointer">
+              <i class="fa-solid fa-user" style="font-size: 2.5rem; color: #fff"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" id="dropdown2">
+              <li>
+                <a class="dropdown-item" id="dropdown1" href="{% url 'user_Profile' %}"><i class="fa-solid fa-user"></i>
+                  Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'myOrders' %}"><i class="fa-solid fa-box"></i> My Orders</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'whishlist' %}"><i class="fa-solid fa-heart"></i> Wishlist</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                  Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {% else %}
+        <div class="login-btn">
+          <a href="{% url 'userLogin' %}">
+            <button type="submit">Login</button>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <div class="whole_content">
+    <div class="filter-container">
+      <h2>FILTER</h2>
+      <div class="filter-section">
+        <p>Categories</p>
+      </div>
+      <!-- <div class="filter-section">
+                    <p>Price:</p>
+                    <input type="range" min="10000" max="30000" value="20000" class="slider">
+                    <div class="price-range">
+                        <span>10,000</span>
+                        <span>30,000</span>
+                    </div>
+                </div> -->
+      <div id="filterForm">
+        <form method="POST" action="">
+          {%csrf_token%}
+          <div class="filter-section">
+            <p>BRAND</p>
+            <a href="{% url 'search1'%}"><label>
+                <name="brand" value="Samsung"> Samsung
+              </label></a>
+            <a href="{% url 'search2' %}"><label>
+                <name="brand" value="Redimi"> Redimi
+              </label></a>
+            <a href="{% url 'search3' %}"> <label>
+                <name="brand" value="Iphone"> Iphone
+              </label></a>
+          </div>
+          <!-- <div class="filter-section">
+                          <p>SIZE</p>
+                          <label><name="size" value="S"> S</label>
+                          <label><name="size" value="M"> M</label>
+                          <label><name="size" value="L"> L</label>
+                          <label><name="size" value="XL"> XL</label>
+                          <label><name="size" value="XXL"> XXL</label>
+                      </div> -->
+          <div class="filter-section">
+            <p>COLOR</p>
+            <a href="{% url 'color1'%}"><label>
+                <name="color" value="Black"> Black
+              </label></a>
+            <a href="{% url 'color2'%}"><label>
+                <name="color" value="Red"> Red
+              </label></a>
+            <a href="{% url 'color3'%}"><label>
+                <name="color" value="More colors"> other colors
+              </label></a>
+          </div>
+          <!-- <div class="filter-section">
+                          <p>MATERIAL</p>
+                          <label><name="material" value="Wood"> Wood</label>
+                          <label><name="material" value="Steel"> Steel</label>
+                          <label><name="material" value="Sponge"> Sponge</label>
+                      </div> -->
+          <div class="filter-section">
+            <p>SORT</p>
+            <a href="{% url 'lowtohigh'%}"><label>
+                <name="sort" value="low_to_high"> Low to high
+              </label></a>
+            <a href="{% url 'hightolow'%}"><label>
+                <name="sort" value="high_to_low"> High to low
+              </label></a>
+            <a href="{% url 'newest'%}"><label>
+                <name="sort" value="newest"> Newest
+              </label></a>
+            <a href="{% url 'atoz'%}"><label>
+                <name="sort" value="a_z"> A-Z
+              </label></a>
+            <a href="{% url 'ztoa'%}"><label>
+                <name="sort" value="z_a"> Z-A
+              </label></a>
+          </div>
+          <div class="button">
+            <button type="submit">Apply Filter</button>
+          </div>
+        </form>
+      </div>
+      <div id="productGrid">
+        <!-- This section will be updated dynamically -->
+      </div>
+
+    </div>
+
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Products</h2>
+      
+      {% if error %}
+        <div class="alert alert-danger text-center">{{ error }}</div>
+        
+        {% if suggested_products %}
+          <h3 class="text-center mt-4">Suggested Products</h3>
+          <div class="product-grid">
+            {% for product in suggested_products %}
+              <div class="product-card">
+                <div class="image-container">
+                  {% for j in wish_flag %}
+                    {% if j.ProductId == product.ProductId %}
+                      <a href="{% url 'remove_whish' productId=product.ProductId %}">
+                        <button type="submit" class="wishlist-unlike-btn" id="heartHide" style="position: absolute; right: 0; z-index: 10; border: none; outline: none; background-color: #fff;">
+                          <i class="fa-solid fa-heart" style="color: #ff1100"></i>
+                        </button>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                  
+                  <a href="{% url 'add_whish' productId=product.ProductId %}">
+                    <button type="submit" class="wishlist-btn" style="position: absolute; right: 0; border: none; outline: none; background-color: #fff;">
+                      <i class="fa-regular fa-heart"></i>
+                    </button>
+                  </a>
+                  
+                  <a href="{% url 'product' productId=product.ProductId %}">
+                    <img src="data:image/png;base64,{{ product.image_data }}" alt="{{ product.Product_name }}" class="product-image" />
+                  </a>
+                </div>
+                <h4 class="product-title">{{ product.Product_name }}</h4>
+                <p class="product-sub">Color/Size</p>
+                <div class="rating">
+                  <span class="star">&#9733;</span>
+                  <span class="value">4.5</span>
+                </div>
+                <div class="money">
+                  <p> &#8377;{{ product.Price }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      
+      {% else %}
+        <div class="product-grid">
+          {% for i in ob %}
+            <div class="product-card">
+              <div class="image-container">
+                {% for j in wish_flag %}
+                  {% if j.ProductId == i.ProductId %}
+                    <a href="{% url 'remove_whish' productId=i.ProductId %}">
+                      <button type="submit" class="wishlist-unlike-btn" id="heartHide" style="position: absolute; right: 0; z-index: 10; border: none; outline: none; background-color: #fff;">
+                        <i class="fa-solid fa-heart" style="color: #ff1100"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+                
+                <a href="{% url 'add_whish' productId=i.ProductId %}">
+                  <button type="submit" class="wishlist-btn" style="position: absolute; right: 0; border: none; outline: none; background-color: #fff;">
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </a>
+                
+                <a href="{% url 'product' productId=i.ProductId %}">
+                  <img src="data:image/png;base64,{{ i.image_data }}" alt="{{ i.Product_name }}" class="product-image" />
+                </a>
+              </div>
+              <h4 class="product-title">{{ i.Product_name }}</h4>
+              <p class="product-sub">Color/Size</p>
+              <div class="rating">
+                <span class="star">&#9733;</span>
+                <span class="value">4.5</span>
+              </div>
+              <div class="money">
+                <p>&#8377;{{ i.Price }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
+    
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("#filterForm form");
+      const productGrid = document.querySelector("#productGrid");
+
+      form.addEventListener("change", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Create a FormData object from the form
+        const formData = new FormData(form);
+        const queryString = new URLSearchParams(formData).toString(); // Convert to query string
+
+        // Send an AJAX request
+        fetch(form.action + "?" + queryString, {
+          method: "GET",
+          headers: {
+            "X-Requested-With": "XMLHttpRequest", // Identify the request as AJAX
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.text();
+          })
+          .then((data) => {
+            productGrid.innerHTML = data; // Update the product grid with the response
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+    });
+
+  </script>
+</body>
+
+</html>

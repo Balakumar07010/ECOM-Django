@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Update</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+
+    button {
+      cursor: pointer;
+    }
+
+    /*Nav Start */
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      background-color: #2f89fc;
+    }
+
+    .nav-container-first {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .logo {
+      width: 6rem;
+      border-radius: 50%;
+    }
+
+    .logo img {
+      width: 100%;
+      transition: all 0.6s;
+    }
+
+    .logo img:hover {
+      filter: drop-shadow(1px 1px 4px #fff);
+    }
+
+    .login {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .cart-logo {
+      width: 2.5rem;
+      transition: all 0.6s;
+    }
+
+    .cart-logo img {
+      width: 100%;
+    }
+
+    .login-btn button {
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.8rem;
+      color: #fff;
+      padding: 0.7rem 1.4rem;
+      background-color: #2f89fc;
+      transition: all 1s;
+    }
+
+    .cart-logo:hover {
+      filter: drop-shadow(1px 1px 4px #fff);
+    }
+
+    .login-btn button:hover {
+      background-color: #fff;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .searchbar {
+      width: 40%;
+      position: relative;
+    }
+
+    .searchbar input {
+      font-size: 1rem;
+      color: #757575;
+      width: 100%;
+      padding: 0.6rem 2.7rem 0.6rem 1.3rem;
+      border: none;
+      outline: none;
+      border-radius: 1.5rem;
+    }
+
+    .search_icon {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.58rem;
+      width: 1.7rem;
+    }
+
+    .search_icon img {
+      width: 100%;
+    }
+
+    .seller button {
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.8rem;
+      color: #fff;
+      padding: 0.5rem 1.4rem;
+      background-color: #2f89fc;
+      transition: all 1s;
+    }
+
+    .seller button:hover {
+      background-color: #fff;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /*Nav End */
+
+    /* Media Queries Nav*/
+    @media screen and (max-width: 1024px) and (min-width: 769px) {
+      .nav-container-first {
+        padding: 0rem 0.8rem;
+      }
+
+      .logo {
+        width: 5rem;
+      }
+
+      .login {
+        gap: 1.5rem;
+      }
+
+      .cart-logo {
+        width: 2.2rem;
+      }
+
+      .login-btn button {
+        font-size: 1rem;
+        padding: 0.5rem 0.8rem;
+      }
+
+      .nav-container-second {
+        gap: 5px;
+        padding: 0rem 0.8rem;
+      }
+
+      .searchbar {
+        width: 40%;
+      }
+
+      .searchbar input {
+        font-size: 0.9rem;
+        padding: 0.4rem 2.5rem 0.4rem 0.6rem;
+      }
+
+      .search_icon {
+        top: 0.2rem;
+        width: 1.5rem;
+      }
+
+      .seller button {
+        font-size: 1rem;
+        padding: 0.5rem 1.2rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) and (min-width: 481px) {
+      .nav-container-first {
+        padding: 0rem 0.6rem;
+      }
+
+      .logo {
+        width: 5rem;
+      }
+
+      .login {
+        gap: 1rem;
+      }
+
+      .cart-logo {
+        width: 1.8rem;
+      }
+
+      .login-btn button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .nav-container-second {
+        gap: 5px;
+        padding: 0rem 0.6rem;
+      }
+
+      .searchbar {
+        width: 40%;
+      }
+
+      .searchbar input {
+        font-size: 0.8rem;
+        padding: 0.35rem 2.5rem 0.35rem 0.6rem;
+      }
+
+      .search_icon {
+        top: 0.1rem;
+        width: 1.2rem;
+      }
+
+      .seller button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) and (min-width: 310px) {
+      .nav-container-first {
+        padding: 0rem 0.5rem;
+      }
+
+      .logo {
+        width: 3rem;
+      }
+
+      .login {
+        gap: 0.8rem;
+      }
+
+      .cart-logo {
+        width: 1.5rem;
+      }
+
+      .login-btn button {
+        font-size: 0.6rem;
+        padding: 0.4rem 0.6rem;
+      }
+
+      .nav-container-second {
+        gap: 5px;
+        padding: 0rem 0.5rem;
+      }
+
+      .searchbar {
+        width: 40%;
+      }
+
+      .searchbar input {
+        font-size: 0.7rem;
+        padding: 0.2rem 2.5rem 0.2rem 0.6rem;
+      }
+
+      .search_icon {
+        top: 0.1rem;
+        width: 1rem;
+      }
+
+      .seller button {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.4rem;
+      }
+    }
+
+    .pcontainer {
+      width: 500px;
+      /* Set fixed width for the form */
+      background-color: #ffffff;
+      /* White background */
+      border-radius: 10px;
+      /* Rounded corners */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      /* Enhanced shadow */
+      padding: 30px;
+      /* Inner padding */
+      margin: 50px auto;
+      /* Center the container */
+      transition: transform 0.3s;
+      /* Animation for hover effect */
+    }
+
+    .pcontainer:hover {
+      transform: translateY(-5px);
+      /* Lift effect on hover */
+    }
+
+    .form-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2f89fc;
+      /* Title color */
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+      /* Label color */
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      /* Transition for focus effect */
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #007bff;
+      /* Focus border color */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      /* Focus shadow */
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .text-danger {
+      font-size: 0.875rem;
+      color: #ff0000;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      /* Transition for hover effect */
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+      /* Darker blue on hover */
+    }
+
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+      .pcontainer {
+        width: 90%;
+        /* Full width on smaller screens */
+      }
+
+      .searchbar {
+        width: 60%;
+        /* Adjust search bar width */
+      }
+    }
+
+    /* Media Query for Tablets (max-width: 768px) */
+    @media screen and (max-width: 768px) {
+      .side-image {
+        display: none;
+      }
+    }
+
+    /* Media Query for Phones (max-width: 480px) */
+    @media screen and (max-width: 480px) {
+      .side-image {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width:1024px) {
+      .wrapper {
+        /* background-color: #ff0000; */
+        display: flex;
+        flex-direction: row;
+      }
+
+      .side-image {
+        width: 45%;
+        /* background-color: #ff0000; */
+      }
+    }
+
+    .ulogin {
+      position: relative;
+    }
+
+    .ulogin .dropdown-menu {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      left: auto;
+      transform: translateY(10px);
+      z-index: 1050;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.3s ease;
+    }
+
+    .ulogin:hover .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+
+    }
+  </style>
+</head>
+
+<body>
+  {% load static %}
+  <nav class="navbar navbar-expand-lg">
+    <div class="nav-container-first">
+      <div class="logo">
+        <a href="{% url 'homePage' %}">
+          <img src="{% static '/img/logo.png' %}" alt="logo" />
+        </a>
+      </div>
+      <div class="searchbar">
+        <input type="text" name="" id="" />
+
+        <div class="search_icon">
+          <a href="">
+            <img src="{% static '/img/magnifying-glass.png' %}" alt="search-con" />
+          </a>
+        </div>
+      </div>
+      <div class="login">
+        <div class="seller">
+          <a href="{% url 'sellerLogin' %}">
+            <button type="submit">Become a Seller</button>
+          </a>
+        </div>
+        <div class="cart-logo">
+          <a href="{% url 'cartPage' %}">
+            <img src="{% static '/img/shopping-bag.png' %}" alt="cart-logo" />
+          </a>
+        </div>
+      {% if ob.user_flag == 'true'%}
+        <div class="d-flex align-items-center">
+          <div>
+            <p style="color: #fff; font-size: 1.3rem">{{ob.username}}</p>
+          </div>
+          <div class="ulogin dropdown position-relative d-flex align-items-center">
+            <button class="btn btn-link pl-3" style="cursor: pointer; background-color: #2f89fc;">
+              <i class="fa-solid fa-user" style="font-size: 2.5rem; color: #fff;"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" id="dropdown2">
+              <li>
+                <a class="dropdown-item" id="dropdown1" href="{% url 'user_Profile' %}"><i class="fa-solid fa-user"></i>
+                  Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'myOrders' %}"><i class="fa-solid fa-box"></i> My Orders</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'whishlist' %}"><i class="fa-solid fa-heart"></i> Wishlist</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                  Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      {% else %}
+        <div class="login-btn">
+          <a href="{% url 'userLogin' %}">
+            <button type="submit">Login</button>
+          </a>
+        </div>
+      {% endif %}
+      </div>
+    </div>
+  </nav>
+  <div class="wrapper">
+    <div class="container main">
+      <div class="row">
+        <div class="col-md-6 side-image">
+
+          <!-------------      image     ------------->
+
+          <img src="../static/img/rb_53919.png" alt="" style="height: 80%; width:100%; margin-top: 80px;">
+          <!-- <div class="text">
+                        <p>Join the community of developers <i>- ludiflex</i></p>
+                    </div>
+                     -->
+        </div>
+        <div class="pcontainer">
+          <h1 class="form-title">Profile Update</h1>
+          <form method="post" onsubmit="return validateForm(event)">
+            {% csrf_token %}
+            <!-- Name -->
+            <div class="form-group">
+              <label for="profile_name" class="form-label">Name</label>
+              <input type="text" name="username" class="form-control" id="profile_name" placeholder="Enter your name"
+                value="{{ob.username}}" aria-describedby="nameError" />
+              <small id="nameError" class="text-danger"></small>
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+              <label for="profile_email" class="form-label">Email ID</label>
+              <input type="email" name="useremail" class="form-control" id="profile_email"
+                placeholder="Enter your email" value="{{ob.email}}" aria-describedby="emailError" />
+              <small id="emailError" class="text-danger"></small>
+            </div>
+            <!-- Address -->
+            <div class="form-group">
+              <label for="profile_address" class="form-label">Address</label>
+              <textarea class="form-control" name="address" id="profile_address" rows="2"
+                placeholder="Enter your address" aria-describedby="addressError">{{ob.address}}</textarea>
+              <small id="addressError" class="text-danger"></small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Gender</label>
+              <div class="radio-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="male" value="male" {% if ob.gender == "male" %} checked {% endif %} />
+                  <label for="male">Male</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="female" value="female" {% if ob.gender == "female" %} checked {% endif %} />
+                  <label for="female">Female</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="other" value="other" {% if ob.gender == "other" %} checked {% endif %} />
+                  <label for="other">Other</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="form-group">
+              <label for="profile_contact" class="form-label">Contact</label>
+              <input type="tel" class="form-control" id="profile_contact" name="contact"
+                placeholder="Enter your contact number" value="{{ob.contact}}" aria-describedby="contactError" />
+              <small id="contactError" class="text-danger"></small>
+            </div>
+            <!-- Date of Birth -->
+            <div class="form-group">
+              <label for="profile_dob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" name="dob" id="profile_dob" value="{{ob.dob}}" />
+            </div>
+            <!-- Update Button -->
+            <button type="submit" class="btn">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function validateForm(event) {
+      event.preventDefault();
+
+      let isValid = true;
+
+      // Clear previous errors
+      document.querySelectorAll(".text-danger").forEach((el) => el.textContent = "");
+
+      // Validation logic
+      const username = document.getElementById("profile_name").value.trim();
+      const useremail = document.getElementById("profile_email").value.trim();
+      const address = document.getElementById("profile_address").value.trim();
+      const contact = document.getElementById("profile_contact").value.trim();
+
+      // Name validation
+      if (!username) {
+        document.getElementById("nameError").textContent = "Name is required.";
+        isValid = false;
+      }
+
+      // Email validation
+      if (!useremail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(useremail)) {
+        document.getElementById("emailError").textContent = "Enter a valid email address.";
+        isValid = false;
+      }
+
+      // Address validation
+      if (!address) {
+        document.getElementById("addressError").textContent = "Address is required.";
+        isValid = false;
+      }
+
+      // Contact validation
+      if (!contact || !/^\d{10}$/.test(contact)) {
+        document.getElementById("contactError").textContent = "Enter a valid 10-digit contact number.";
+        isValid = false;
+      }
+
+      // If all fields are valid, submit the form
+      if (isValid) {
+        alert("Form submitted successfully!");
+        document.forms[0].submit();  // Submit the form programmatically
+      }
+
+      return isValid;
+    }
+
+    // Clear error messages when user starts typing or interacting with inputs
+    document.querySelectorAll("input, textarea").forEach((input) => {
+      input.addEventListener("input", function () {
+        document.getElementById(input.id + "Error").textContent = "";
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>

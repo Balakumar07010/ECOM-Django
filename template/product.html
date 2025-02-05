@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+      }
+
+      nav {
+        width: 100%;
+        background-color: #f8f9fa;
+        padding: 1rem;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+      }
+
+      .logo p {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .search {
+        display: flex;
+        flex: 1;
+        max-width: 400px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        order: 0;
+      }
+
+      #search {
+        flex: 1;
+        padding: 0.5rem;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+      }
+
+      .searchBtn {
+        background-color: #ddd;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+
+      .btn {
+        display: flex;
+        gap: 1rem;
+        flex-shrink: 0;
+        order: 1;
+      }
+
+      .navBtn {
+        border: none;
+        padding: 0.7rem 1.2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .navBtn.cart {
+        background-color: #ffc107;
+      }
+
+      .navBtn.sell {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      .navBtn.login {
+        background-color: #28a745;
+        color: #fff;
+      }
+
+      /* Responsive styling */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-wrap: wrap;
+        }
+
+        .search {
+          order: 1;
+          width: 100%;
+          margin-top: 1rem;
+        }
+
+        .logo {
+          flex: 1;
+        }
+
+        .btn {
+          order: 2;
+          justify-content: flex-end;
+        }
+
+        #search {
+          font-size: 0.9rem;
+        }
+
+        .searchBtn {
+          padding: 0.4rem 0.8rem;
+        }
+
+        .navBtn {
+          font-size: 0.9rem;
+          padding: 0.6rem 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .search {
+          width: 100%;
+          margin-top: 1rem;
+        }
+
+        .logo img {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        .logo p {
+          font-size: 1.2rem;
+        }
+
+        .navBtn {
+          font-size: 0.8rem;
+          padding: 0.5rem 0.8rem;
+        }
+      }
+      .container {
+        display: flex;
+        justify-content: space-around;
+        overflow-x: hidden;
+      }
+      .right {
+        /* width:50vw; */
+        /* background-color: red; */
+        text-align: justify;
+        line-height: 40px;
+        /* display: flex; */
+        margin: 20px;
+        margin-left: 50px;
+        margin-top: 50px;
+      }
+      .left {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        /* background-color: blue; */
+        text-align: center;
+        justify-content: space-between;
+      }
+      .left button {
+        width: 200.5px;
+        border-radius: 5px;
+        height: 60px;
+        background-color: pink;
+        margin-top: 10px;
+      }
+      .bottom {
+        /* width:240px; */
+        /* background-color: rgb(46, 41, 41); */
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        place-items: center;
+        /* background-color: blueviolet; */
+      }
+
+      .text {
+        width: 10em;
+        /* background-color: pink; */
+      }
+      .card {
+        /* background-color: rgb(110, 179, 101); */
+        /* margin: 20px; */
+        background-color: rgb(191, 167, 167);
+        /* width:10em; */
+        height: 14em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 10em;
+      }
+      .image img {
+        height: 10em;
+        width: 10em;
+      }
+      /* .......................................... */
+      @media (max-width: 1200px) {
+        .bottom {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .bottom {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .card {
+        font-size: 1rem;
+      }
+
+      @media (max-width: 1200px) {
+        .card {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .card {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .card {
+          font-size: 0.7rem;
+        }
+      }
+      .card1 {
+        display: flex;
+        /* align-items: center; */
+        /* justify-content: center; */
+        /* gap: 8px; */
+      }
+
+      .stats-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 50px;
+        height: 25px;
+        border-radius: 20px;
+        /* background-color: rgb(255, 255, 255); */
+        padding: 1px;
+      }
+      .heading {
+        font-size: 0.3em;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .bottom-wrapper {
+        width: 100%;
+        display: flex;
+        /* align-items: center; */
+        /* justify-content: space-between; */
+      }
+      .bottom-wrapper .star {
+        width: 20px;
+        fill: gold;
+      }
+      .bottom-wrapper p {
+        font-size: 0.8em;
+        font-weight: 700;
+      }
+      .two {
+        display: flex;
+        /* background-color: red; */
+      }
+      .card1 {
+        display: flex;
+        /* align-items: center; */
+        /* justify-content: center; */
+        /* gap: 8px; */
+      }
+
+      .stats-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 50px;
+        height: 25px;
+        border-radius: 20px;
+        /* background-color: rgb(255, 255, 255); */
+        padding: 1px;
+      }
+      .heading {
+        font-size: 0.3em;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .bottom-wrapper {
+        width: 100%;
+        display: flex;
+        /* align-items: center; */
+        /* justify-content: space-between; */
+      }
+      .bottom-wrapper .star {
+        width: 20px;
+        fill: gold;
+      }
+      .bottom-wrapper p {
+        font-size: 0.8em;
+        font-weight: 700;
+      }
+      .two {
+        display: flex;
+        /* background-color: red; */
+      }
+      /* klfjaskfjpajihcxhvazkSdnv;sjjvpd */
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      /* Carousel Container */
+      .carousel-container {
+        position: relative;
+        width: 90%; /* Adjust width as needed */
+        margin: auto;
+        overflow: hidden; /* Hide scrollable overflow */
+        background-color: #fff;
+        padding: 20px 0;
+      }
+
+      /* Carousel Wrapper */
+      .carousel {
+        display: flex;
+        gap: 20px;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      /* Product Card */
+      .card {
+        flex: 0 0 200px; /* Fixed width for each product */
+        background-color: #fff;
+        background-color: blue;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+        margin-bottom: 10px;
+      }
+
+      .card h4 {
+        font-size: 14px;
+        margin: 5px 0;
+        color: #333;
+      }
+
+      .card p {
+        font-size: 12px;
+        color: #555;
+      }
+      /* Arrows */
+      .arrow {
+        position: absolute;
+        /* top: 50%; */
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 18px;
+        /* background-color: red; */
+        z-index: 11; /* Ensure arrows stay above the cards */
+      }
+
+      .arrow.left {
+        left: 10px;
+        background-color: blue;
+      }
+
+      .arrow.right {
+        right: 10px;
+        background-color: red;
+        position: absolute;
+        top: -10px;
+      }
+
+      /* Responsiveness */
+      @media (max-width: 768px) {
+        .card {
+          flex: 0 0 150px; /* Smaller cards on mobile */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .arrow {
+          width: 30px;
+          height: 30px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <img src="logo.png" alt="logo" />
+          <p>Company Name</p>
+        </div>
+        <div class="search">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search..."
+          />
+          <button class="searchBtn">🔍</button>
+        </div>
+        <div class="btn">
+          <button class="navBtn cart">🛒 Cart</button>
+          <button class="navBtn sell">Seller</button>
+          <button class="navBtn login">Login</button>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <p>{{ob.message}}</p>
+    </div>
+    <div class="container" style="background-color: white">
+      {% for i in item %}
+      <div class="left">
+        <img
+          src="data:image/png;base64,{{ i.image_data }}"
+          alt="headset"
+          style="width: 30vw; height: 80vh"
+        />
+        <div class="button-group">
+          <a href="{% url 'cart' productId=i.ProductId %}">
+            <button>ADD TO CART</button>
+          </a>
+          <button>BUY NOW</button>
+        </div>
+      </div>
+      <div class="right">
+        <h3>{{i.Product_name}}</h3>
+        <h4>{{i.Description}}</h4>
+        <!-- start -->
+        <div class="two">
+          <div class="card1">
+            <div class="stats-wrapper">
+              <div class="bottom-wrapper">
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="star"
+                >
+                  <g data-name="Layer 2">
+                    <g data-name="star">
+                      <rect
+                        opacity="0"
+                        transform="rotate(90 12 12)"
+                        height="24"
+                        width="24"
+                      ></rect>
+                      <path
+                        d="M17.56 21a1 1 0 0 1-.46-.11L12 18.22l-5.1 2.67a1 1 0 0 1-1.45-1.06l1-5.63-4.12-4a1 1 0 0 1-.25-1 1 1 0 0 1 .81-.68l5.7-.83 2.51-5.13a1 1 0 0 1 1.8 0l2.54 5.12 5.7.83a1 1 0 0 1 .81.68 1 1 0 0 1-.25 1l-4.12 4 1 5.63a1 1 0 0 1-.4 1 1 1 0 0 1-.62.18z"
+                      ></path>
+                    </g>
+                  </g>
+                </svg>
+                <p class="count">4.5</p>
+              </div>
+            </div>
+          </div>
+          <p style="color: darkgray; font-size: 16px">
+            3,70,810 Ratings & 39,590 Reviews
+          </p>
+        </div>
+
+        <!-- end -->
+        <p style="color: darkgreen">Special price</p>
+        <h2>₹ {{i.Price}}</h2>
+        <div class="box">
+          <p style="color: rgb(223, 70, 70)">Highlights</p>
+          <ul style="margin-left: 50px; font-size: 15px; color: black">
+            <li>With Mic:Yes</li>
+            <li>Connector type: 3.5 mm</li>
+            <li>Battery life: 15 hr | Charging time: 3 Hours</li>
+            <li>
+              Drivers- Its 40mm dynamic drivers help pump out immersive HD audio
+              all day long
+            </li>
+            <li>
+              Playback- It provides a massive battery backup of upto 15 hours
+              for a superior playback time.
+            </li>
+            <li>
+              Ear Cushions- It has been ergonomically designed and structured as
+              an on-ear headphone to provide the best user experience with its
+              comfortable padded earcushions and lightweight design
+            </li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="bottom" style="height: 100vh; margin-top: 120px; width: 100%">
+      <div class="product-card1">
+        <div class="image-container">
+          <label class="heart">
+            <input type="checkbox" />
+            <div class="checkmark">
+              <svg viewBox="0 0 256 256">
+                <rect fill="none" height="256" width="256"></rect>
+                <path
+                  d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+                  stroke-width="20px"
+                  stroke="#FFF"
+                  fill="none"
+                ></path>
+              </svg>
+            </div>
+          </label>
+          <img
+            src="friedchicken.jpg"
+            alt="{{ i.Product_name }}"
+            class="product-image"
+          />
+        </div>
+        <h4 class="product-title">Fried Chicken</h4>
+        <p class="product-sub">Color/Size</p>
+        <div class="rating">
+          <span class="star">&#9733;</span>
+          <!-- Unicode for a filled star -->
+          <span class="value">4.5</span>
+        </div>
+        <div class="money">
+          <p>$5000</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // JavaScript for Carousel Navigation
+    const carousel = document.querySelector(".carousel");
+    const leftArrow = document.querySelector(".arrow.left");
+    const rightArrow = document.querySelector(".arrow.right");
+    const cardWidth = document.querySelector(".card").offsetWidth + 20; // Card width + gap
+    let currentPosition = 0;
+
+    // Move carousel to the right
+    rightArrow.addEventListener("click", () => {
+      if (
+        Math.abs(currentPosition) <
+        carousel.scrollWidth - carousel.offsetWidth
+      ) {
+        currentPosition -= cardWidth;
+        carousel.style.transform = `translateX(${currentPosition}px)`;
+      }
+    });
+
+    // Move carousel to the left
+    leftArrow.addEventListener("click", () => {
+      if (currentPosition < 0) {
+        currentPosition += cardWidth;
+        carousel.style.transform = `translateX(${currentPosition}px)`;
+      }
+    });
+  </script>
+</html>

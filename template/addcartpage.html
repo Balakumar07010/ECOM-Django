@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Card</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .ulogin {
+      position: relative;
+    }
+
+    .ulogin .dropdown-menu {
+      position: absolute;
+      top:60px;
+      right: 0;
+      left: auto;
+      transform: translateY(10px);
+      z-index: 1050;
+      display: none;
+      /* Initially hidden */
+      opacity: 0;
+      /* For smooth transition */
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .ulogin:hover .dropdown-menu {
+      display: block;
+      /* Show dropdown on hover */
+      opacity: 1;
+      transform: translateY(0);
+      /* Animate dropdown into place */
+    }
+/*Nav Start */
+
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: #2f89fc;
+}
+.nav-container-first {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.logo {
+  width: 6rem;
+  border-radius: 50%;
+}
+.logo img {
+  width: 100%;
+  transition: all 0.6s;
+}
+.logo img:hover {
+  filter: drop-shadow(1px 1px 4px #fff);
+}
+.login {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  align-items: center;
+}
+.cart-logo {
+  width: 2.5rem;
+  transition: all 0.6s;
+}
+.cart-logo img {
+  width: 100%;
+}
+.login-btn button {
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.8rem;
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+  background-color: #2f89fc;
+  transition: all 1s;
+}
+.cart-logo:hover {
+  filter: drop-shadow(1px 1px 4px #fff);
+}
+.login-btn button:hover {
+  background-color: #fff;
+  font-weight: 600;
+  color: #000;
+}
+.searchbar {
+  width: 40%;
+  position: relative;
+}
+.searchbar input {
+  font-size: 1rem;
+  color: #757575;
+  width: 100%;
+  padding: 0.6rem 2.7rem 0.6rem 1.3rem;
+  border: none;
+  outline: none;
+  border-radius: 1.5rem;
+}
+.search_icon {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.58rem;
+  width: 1.7rem;
+}
+.search_icon img {
+  width: 100%;
+}
+.seller button {
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.8rem;
+  color: #fff;
+  padding: 0.5rem 1.4rem;
+  background-color: #2f89fc;
+  transition: all 1s;
+}
+.seller button:hover {
+  background-color: #fff;
+  font-weight: 600;
+  color: #000;
+}
+
+
+/*Nav End */
+
+/* Media Queries Nav*/
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .nav-container-first {
+    padding: 0rem 0.8rem;
+  }
+  .logo {
+    width: 5rem;
+  }
+  .login {
+    gap: 1.5rem;
+  }
+  .cart-logo {
+    width: 2.2rem;
+  }
+  .login-btn button {
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+  }
+  .nav-container-second {
+    gap: 5px;
+    padding: 0rem 0.8rem;
+  }
+  .searchbar {
+    width: 40%;
+  }
+  .searchbar input {
+    font-size: 0.9rem;
+    padding: 0.4rem 2.5rem 0.4rem 0.6rem;
+  }
+  .search_icon {
+    top: 0.2rem;
+    width: 1.5rem;
+  }
+  .seller button {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 481px) {
+  .nav-container-first {
+    padding: 0rem 0.6rem;
+  }
+  .logo {
+    width: 5rem;
+  }
+  .login {
+    gap: 1rem;
+  }
+  .cart-logo {
+    width: 1.8rem;
+  }
+  .login-btn button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .nav-container-second {
+    gap: 5px;
+    padding: 0rem 0.6rem;
+  }
+  .searchbar {
+    width: 40%;
+  }
+  .searchbar input {
+    font-size: 0.8rem;
+    padding: 0.35rem 2.5rem 0.35rem 0.6rem;
+  }
+  .search_icon {
+    top: 0.1rem;
+    width: 1.2rem;
+  }
+  .seller button {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 310px) {
+  .nav-container-first {
+    padding: 0rem 0.5rem;
+  }
+  .logo {
+    width: 3rem;
+  }
+  .login {
+    margin-left: 0.3rem;
+    gap: 0.5rem;
+  }
+  .cart-logo {
+    width: 1.5rem;
+  }
+  .login-btn button {
+    font-size: 0.6rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .nav-container-second {
+    gap: 5px;
+    padding: 0rem 0.5rem;
+  }
+  .searchbar {
+    width: 30%;
+  }
+  .searchbar input {
+    font-size: 0.7rem;
+    padding: 0.2rem 2.5rem 0.2rem 0.6rem;
+  }
+  .search_icon {
+    top: 0.1rem;
+    width: 1rem;
+  }
+  .seller button {
+    font-size: 0.5rem;
+    padding: 0.3rem 0.4rem;
+  }
+}
+/* End of Meadia queries n Nav Bar */
+
+      .wish_pro {
+        /* border-top: 1px solid black; */
+        /* border-bottom: 1px solid black; */
+
+        /* border-bottom: 1px solid black; */
+        margin: 20px;
+        padding-top: 25px;
+        width: 100%;
+      }
+      .wish_pro {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      #quan {
+        margin-bottom: 3px;
+      }
+      #pquan {
+        margin: 0px;
+      }
+      .content {
+        margin-left: 20px;
+      }
+      /* .head_wish{
+    width: 60%;
+    /* background-color: bisque; 
+} */
+
+      .head_wish {
+        width: 70%;
+        height: 600px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-right: 10px;
+      }
+      .head_wish::-webkit-scrollbar {
+        display: none; /* For Chrome, Safari, and Opera */
+      }
+
+      .head_wish {
+        -ms-overflow-style: none; /* For IE and Edge */
+        scrollbar-width: none; /* For Firefox */
+      }
+      .wish_pro {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        /* border: 1px solid black; */
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .whole_content {
+        display: flex;
+      }
+
+      .price-details {
+        flex: 1;
+        height: 500px;
+        background: #fff;
+        border-radius: 8px;
+        /* position: fixed; */
+        padding: 20px;
+        width: 100px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .price-details h3 {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .price-details p {
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #555;
+      }
+      .data {
+        display: block;
+        row-gap: 200px;
+      }
+
+      .price-details span {
+        /* display: flex; */
+        float: right;
+        font-weight: bold;
+        column-gap: 100px;
+
+        row-gap: 200px;
+      }
+
+      .price-details h4 {
+        font-size: 18px;
+        margin-top: 160px;
+        color: #333;
+      }
+      .number-control {
+        display: flex;
+        align-items: center;
+      }
+
+      .number-left::before,
+      .number-right::after {
+        content: attr(data-content);
+        background-color: #faf8f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(249, 244, 244);
+        width: 20px;
+        color: rgb(0, 0, 0);
+        transition: background-color 0.3s;
+        cursor: pointer;
+      }
+
+      .number-left::before {
+        content: "-";
+      }
+
+      .number-right::after {
+        content: "+";
+      }
+
+      .number-quantity {
+        padding: 1rem;
+        border: 0;
+        width: 40px;
+      }
+
+      .number-left:hover::before,
+      .number-right:hover::after {
+        background-color: #fffcfc;
+      }
+      #pquan {
+        font-weight: 500;
+      }
+      .place-order {
+        /* line-gap-override: 30px; */
+        background-color: rgb(40, 251, 93);
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        margin-top: 30px;
+      }
+      .place-order:hover {
+        /* line-gap-override: 30px; */
+        background-color: rgb(92, 92, 239);
+        width: 100%;
+        height: 50px;
+        border-radius: 12px;
+        margin-top: 30px;
+        box-shadow: black;
+        /* transform: scale(1.1); */
+      }
+      /*                    chatgpd                    */
+      /* Responsive Design */
+
+      .number-control button {
+            width: 30px;
+            height: 30px;
+            background-color: #f1f1f1;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number-control input {
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        .wish_pro{
+    /* border-top: 1px solid black; */
+    /* border-bottom: 1px solid black; */
+
+    /* border-bottom: 1px solid black; */
+    margin: 20px;
+    padding-top: 25px;
+    width: 100%;
+}
+.wish_pro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#quan{
+    margin-bottom: 3px;
+}
+#pquan{
+    margin: 0px;
+}
+.content{
+    margin-left: 20px;
+}
+/* .head_wish{
+    width: 60%;
+    /* background-color: bisque; 
+} */
+
+.head_wish {
+    width: 70%;
+    height: 600px; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    padding-right: 10px; 
+}
+.head_wish::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+.head_wish {
+    -ms-overflow-style: none; /* For IE and Edge */
+    scrollbar-width: none; /* For Firefox */
+}
+.wish_pro {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid black; */
+    padding: 10px;
+    margin-bottom: 20px; 
+}
+.whole_content{
+    display: flex;
+}
+
+.price-details {
+    flex: 1;
+    height: 500px;
+    background: #fff;
+    border-radius: 8px;
+    /* position: fixed; */
+    padding: 20px;
+    width: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.price-details h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.price-details p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+}
+.data{
+    display: block;
+    row-gap: 200px;
+}
+
+.price-details span {
+    /* display: flex; */
+    float: right;
+    font-weight: bold;
+     column-gap: 100px; 
+    
+    row-gap: 200px; 
+}
+
+ .price-details h4 {
+    font-size: 18px;
+    margin-top: 160px;
+    color: #333;
+} 
+.wish_pro img{
+    height:200px;
+    width:200px;
+
+}
+.number-control {
+    display: flex;
+    align-items: center;
+  }
+  
+  .number-left::before,
+  .number-right::after {
+    content: attr(data-content);
+    background-color: #faf8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(249, 244, 244);
+    width: 20px;
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .number-left::before {
+    content: "-";
+    
+  }
+  
+  .number-right::after {
+    content: "+";
+  }
+  
+  .number-quantity {
+    padding: 1rem;
+    border: 0;
+    width: 40px;
+    
+  }
+  
+  .number-left:hover::before,
+  .number-right:hover::after {
+    background-color: #fffcfc;
+  }
+  #pquan{
+    font-weight:500;
+  }
+  .place-order{
+    /* line-gap-override: 30px; */
+    background-color: rgb(40, 251, 93);
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 30px;
+  }
+  .place-order:hover{
+    /* line-gap-override: 30px; */
+    background-color: rgb(92, 92, 239);
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: black;
+    /* transform: scale(1.1); */
+  }
+  /*                    chatgpd                    */
+  /* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        display: block;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 10px solid black;
+        /* padding: 0.5rem 1rem; ` */
+    }
+}
+/* Desktop view - default */
+.whole_content {
+    display: flex;
+    flex-direction: row;
+    /* background-color: red; */
+    justify-content: space-between;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .whole_content {
+        /* background-color: red; */
+        display: flex;
+        flex-direction: column; /* Stack the elements */
+        align-items: center;
+    }
+    .head_wish {
+        width: 100%; /* Full width for cards */
+    }
+    .price-details {
+        width: 100%; /* Full width for price details */
+        margin-top: 20px; /* Add some spacing */
+    }
+    .price-details h4 {
+        margin-top: 10px; /* Adjust spacing for smaller screens */
+    }
+    .wish_pro img{
+        height:50px;
+        width: 50px;
+        margin-left: 20px;
+    }
+    .wish_pro{
+        font-size: 14px;
+    }
+    .wish_pro{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media  screen and (min-width:768px) and (max-width:1100px) {
+    .wish_pro{
+        width:80%;
+        /* background-color: red;? */
+    }
+    .content{
+        width:75%;
+    }
+}
+
+    </style>
+  </head>
+
+  <body>
+    <!-- <div class="container-fluid"> -->
+      {% load static %}
+  <nav class="navbar navbar-expand-lg">
+    <div class="nav-container-first">
+      <div class="logo">
+        <a href="{% url 'homePage' %}">
+          <img src="{% static '/img/logo.png' %}" alt="logo" />
+        </a>
+      </div>
+      <form id="forms" method="post" action="{% url 'search' %}">
+          {%csrf_token%}
+        <div class="search d-flex align-items-center">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            class="form-control me-2"
+            placeholder="Search..."
+          />
+          <button type="submit" class="searchBtn btn btn-outline-primary">
+            <i class="fas fa-search"></i>
+          </button> 
+        </div>
+      </form>
+      <div class="login">
+        <div class="seller">
+          <a href="{% url 'sellerLogin' %}">
+            <button type="submit">Become a Seller</button>
+          </a>
+        </div>
+        <div class="cart-logo">
+          <a href="{% url 'cartPage' %}">
+            <img src="{% static '/img/shopping-bag.png' %}" alt="cart-logo" />
+          </a>
+        </div>
+        {% if ob.user_flag == 'true'%}
+        <div class="d-flex align-items-center">
+          <div>
+            <p style="color: #fff; font-size: 1.3rem">{{ob.username}}</p>
+          </div>
+          <div class="ulogin dropdown position-relative d-flex align-items-center">
+            <button class="btn btn-link pl-3" style="cursor: pointer">
+              <i class="fa-solid fa-user" style="font-size: 2.5rem; color: #fff"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" id="dropdown2">
+              <li>
+                <a class="dropdown-item" id="dropdown1" href="{% url 'user_Profile' %}"><i class="fa-solid fa-user"></i>
+                  Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'myOrders' %}"><i class="fa-solid fa-box"></i> My Orders</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'whishlist' %}"><i class="fa-solid fa-heart"></i> Wishlist</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                  Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {% else %}
+        <div class="login-btn">
+          <a href="{% url 'userLogin' %}">
+            <button type="submit">Login</button>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+      <div class="whole_content">
+        <div class="head_wish">
+            {% for i in b %}
+            <div class="wish_pro" style="background-color:whitesmoke;">
+                <div class="img">
+                    <img src="data:image/png;base64,{{ i.image_data }}" alt="" />
+                </div>
+
+                <div class="content">
+
+                    <p style="font-size: 14px; font-weight:500;">
+                        {{i.Product_name}}
+                    </p>
+                    <p style="font-size:14px; margin-top:-20px; color:grey;">{{i.Description}}</p>
+                    <h2 style="font-size: 16px; margin-top:-10px;">₹ {{i.Price}}</h2>
+                    <p id="pquan" style="font-size:15px;">Quantity: {{i.Quantity}} </p>
+                    <div class="sec" style="display: flex; flex-direction:row; justify-content:space-between; margin-top: 40px;">
+                        <div class="number-control" style="font-size: 24px; width: 500px; height: 45px;">
+                            <button class="number-left"></button>
+                            <input type="text" name="number" class="number-quantity" value="1"
+                                style="height: 20px; width: 50px; text-align:left; padding-right:1px;" readonly>
+                            <button class="number-right"></button>
+                        </div>
+                    
+                        
+                        <a href="{% url 'remove_cart' productId=i.ProductId %}" style="text-decoration: none; font-size: 20px; color: grey;">Remove</a>
+                        <!-- <button class="remove" style="border-radius:5px;border:none; font-size:17px;">REMOVE</button> -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="price-details">
+            <form method="post">
+              {% csrf_token %}
+              <input type="text" name="lastPrice" id="lastPrice" hidden />
+              <div hidden>{{priceDetails.ProductId}}</div>
+              <h3>Price Details</h3>
+              <p id="price" hidden>{{total}}</p>
+              <p id="GSTprice" hidden>{{finalPrice}}</p>
+              <div class="data">
+                <p>Product ({{oblen}} items): <span id="final">₹</span></p>
+                <p>Discount: <span>₹ 60</span></p>
+                <p>CGST: <span>18%</span></p>
+                <p>SGST: <span>18%</span></p>
+                <h4>Total: <span id="totalGST" name="updatePrice">₹</span></h4>
+              </div>
+              <button type="submit" class="place-order">Place Order</button>
+            </form>
+          </div>
+
+    </div>
+</div>
+</body>
+<script>
+// Select the required elements
+const numberControls = document.querySelectorAll(".number-control");
+let productPrice = parseFloat(document.getElementById("price").innerText); //Database Product Price
+let GSTprice = parseFloat(document.getElementById("GSTprice").innerText); //Database Product Price + GST
+
+let finalPrice = document.getElementById("final"); // starting product Price
+let totalGST = document.getElementById("totalGST"); // starting product + GST Price
+
+// starting product Price create span tag
+let spanElnew = document.createElement("span");
+spanElnew.innerText = productPrice;
+finalPrice.appendChild(spanElnew);
+
+// starting product Price create span tag
+let spanElnewGST = document.createElement("span");
+spanElnewGST.innerText = GSTprice;
+totalGST.appendChild(spanElnewGST);
+lastPrice.value = GSTprice;
+
+numberControls.forEach((control) => {
+  let numberLeft = control.querySelector(".number-left"); // Minus button
+  let numberRight = control.querySelector(".number-right"); // Plus button
+  let numberQuantity = control.querySelector(".number-quantity"); // Input box
+
+  let count = parseInt(numberQuantity.value) || 1;
+
+  // Add event listener to the minus button
+  numberLeft.addEventListener("click", () => {
+    if (count > 1) {
+      count--;
+      numberQuantity.value = count;
+      updatePrices(count);
+    }
+    numberLeft.disabled = count <= 1;
+  });
+
+  // Add event listener to the plus button
+  numberRight.addEventListener("click", () => {
+    count++;
+    numberQuantity.value = count;
+    updatePrices(count);
+    numberLeft.disabled = count <= 1;
+  });
+
+  // Initial state of the minus button
+  numberLeft.disabled = count <= 1;
+});
+
+function updatePrices(quantity) {
+  finalPrice.innerHTML = "";
+  totalGST.innerHTML = "";
+
+  let totalPrice = quantity * productPrice;
+  let gst_amount = totalPrice * (18 / 100);
+  let final_price = totalPrice + gst_amount;
+
+  // Update final price
+  let spanEl = document.createElement("span");
+  spanEl.innerText = totalPrice;
+  finalPrice.appendChild(spanEl);
+
+  // Update total price with GST
+  let spanElGST = document.createElement("span");
+  spanElGST.innerText = final_price;
+  totalGST.appendChild(spanElGST);
+  lastPrice.value = final_price;
+}
+</script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"
+></script>
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Orders</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        height: 100vh;
+        font-family: "Poppins", serif;
+      }
+      button {
+        cursor: pointer;
+      }
+      /*Nav Start */
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        background-color: #2f89fc;
+      }
+      .nav-container-first {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .logo {
+        width: 6rem;
+        border-radius: 50%;
+      }
+      .logo img {
+        width: 100%;
+        transition: all 0.6s;
+      }
+      .logo img:hover {
+        filter: drop-shadow(1px 1px 4px #fff);
+      }
+      .login {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        align-items: center;
+      }
+      .cart-logo {
+        width: 2.5rem;
+        transition: all 0.6s;
+      }
+      .cart-logo img {
+        width: 100%;
+      }
+      .login-btn button {
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 0.8rem;
+        color: #fff;
+        padding: 0.7rem 1.4rem;
+        background-color: #2f89fc;
+        transition: all 1s;
+      }
+      .cart-logo:hover {
+        filter: drop-shadow(1px 1px 4px #fff);
+      }
+      .login-btn button:hover {
+        background-color: #fff;
+        font-weight: 600;
+        color: #000;
+      }
+      .searchbar {
+        width: 40%;
+        position: relative;
+      }
+      .searchbar input {
+        font-size: 1rem;
+        color: #757575;
+        width: 100%;
+        padding: 0.6rem 2.7rem 0.6rem 1.3rem;
+        border: none;
+        outline: none;
+        border-radius: 1.5rem;
+      }
+      .search_icon {
+        position: absolute;
+        top: 0.4rem;
+        right: 0.58rem;
+        width: 1.7rem;
+      }
+      .search_icon img {
+        width: 100%;
+      }
+      .seller button {
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 0.8rem;
+        color: #fff;
+        padding: 0.5rem 1.4rem;
+        background-color: #2f89fc;
+        transition: all 1s;
+      }
+      .seller button:hover {
+        background-color: #fff;
+        font-weight: 600;
+        color: #000;
+      }
+      /*Nav End */
+
+      /* Media Queries Nav*/
+      @media screen and (max-width: 1024px) and (min-width: 769px) {
+        .nav-container-first {
+          padding: 0rem 0.8rem;
+        }
+        .logo {
+          width: 5rem;
+        }
+        .login {
+          gap: 1.5rem;
+        }
+        .cart-logo {
+          width: 2.2rem;
+        }
+        .login-btn button {
+          font-size: 1rem;
+          padding: 0.5rem 0.8rem;
+        }
+        .nav-container-second {
+          gap: 5px;
+          padding: 0rem 0.8rem;
+        }
+        .searchbar {
+          width: 40%;
+        }
+        .searchbar input {
+          font-size: 0.9rem;
+          padding: 0.4rem 2.5rem 0.4rem 0.6rem;
+        }
+        .search_icon {
+          top: 0.2rem;
+          width: 1.5rem;
+        }
+        .seller button {
+          font-size: 1rem;
+          padding: 0.5rem 1.2rem;
+        }
+      }
+
+      @media screen and (max-width: 768px) and (min-width: 481px) {
+        .nav-container-first {
+          padding: 0rem 0.6rem;
+        }
+        .logo {
+          width: 5rem;
+        }
+        .login {
+          gap: 1rem;
+        }
+        .cart-logo {
+          width: 1.8rem;
+        }
+        .login-btn button {
+          font-size: 0.9rem;
+          padding: 0.4rem 0.8rem;
+        }
+        .nav-container-second {
+          gap: 5px;
+          padding: 0rem 0.6rem;
+        }
+        .searchbar {
+          width: 40%;
+        }
+        .searchbar input {
+          font-size: 0.8rem;
+          padding: 0.35rem 2.5rem 0.35rem 0.6rem;
+        }
+        .search_icon {
+          top: 0.1rem;
+          width: 1.2rem;
+        }
+        .seller button {
+          font-size: 0.8rem;
+          padding: 0.5rem 0.8rem;
+        }
+      }
+
+      @media screen and (max-width: 480px) and (min-width: 310px) {
+        .nav-container-first {
+          padding: 0rem 0.5rem;
+        }
+        .logo {
+          width: 3rem;
+        }
+        .login {
+          margin-left: 0.3rem;
+          gap: 0.5rem;
+        }
+        .cart-logo {
+          width: 1.5rem;
+        }
+        .login-btn button {
+          font-size: 0.6rem;
+          padding: 0.4rem 0.6rem;
+        }
+        .nav-container-second {
+          gap: 5px;
+          padding: 0rem 0.5rem;
+        }
+        .searchbar {
+          width: 30%;
+        }
+        .searchbar input {
+          font-size: 0.7rem;
+          padding: 0.2rem 2.5rem 0.2rem 0.6rem;
+        }
+        .search_icon {
+          top: 0.1rem;
+          width: 1rem;
+        }
+        .seller button {
+          font-size: 0.5rem;
+          padding: 0.3rem 0.4rem;
+        }
+      }
+      /* End of Meadia queries n Nav Bar */
+      /* Navbar DropDown Start */
+      .ulogin {
+        position: relative;
+      }
+
+      .ulogin .dropdown-menu {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        left: auto;
+        transform: translateY(10px);
+        z-index: 1050;
+        display: none; /* Initially hidden */
+        opacity: 0; /* For smooth transition */
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .ulogin:hover .dropdown-menu {
+        display: block; /* Show dropdown on hover */
+        opacity: 1;
+        transform: translateY(0); /* Animate dropdown into place */
+      }
+      /* Navbar DropDown End */
+
+      .og {
+        display: flex;
+        flex-direction: column;
+      }
+      .rating {
+        width: 150px;
+        /* display: flex; */
+        direction: rtl;
+        position: relative;
+        left: 0px;
+        /* justify-content: flex-start; */
+        /* background-color: aqua; */
+        /* align-items: start; */
+      }
+      .rating:not(:checked) > input {
+        position: absolute;
+        appearance: none;
+      }
+
+      .rating:not(:checked) > label {
+        cursor: pointer;
+        font-size: 30px;
+        color: #666;
+      }
+
+      .rating:not(:checked) > label:before {
+        content: "★";
+      }
+
+      .rating > input:checked + label:hover,
+      .rating > input:checked + label:hover ~ label,
+      .rating > input:checked ~ label:hover,
+      .rating > input:checked ~ label:hover ~ label,
+      .rating > label:hover ~ input:checked ~ label {
+        color: #e58e09;
+      }
+
+      .rating:not(:checked) > label:hover,
+      .rating:not(:checked) > label:hover ~ label {
+        color: #ff9e0b;
+      }
+
+      .rating > input:checked ~ label {
+        color: #ffa723;
+      }
+
+      @media (max-width: 768px) {
+        /* General Font Size and Spacing Adjustments */
+        body {
+          font-size: 16px;
+          /* Slight reduction for readability */
+        }
+
+        h1,
+        h4,
+        h5 {
+          font-size: 18px;
+          /* Adjust headers */
+        }
+
+        p {
+          font-size: 14px;
+          /* Adjust paragraph text */
+        }
+
+        /* Navbar Adjustments */
+        .navbar .navbar-brand span {
+          font-size: 18px;
+        }
+
+        .navbar .btn {
+          padding: 0.4rem 0.8rem;
+          /* Maintain comfortable tap targets */
+          font-size: 14px;
+        }
+
+        .navbar .input-group input {
+          font-size: 14px;
+          padding: 0.4rem;
+        }
+
+        .navbar .input-group button {
+          font-size: 14px;
+          padding: 0.4rem;
+        }
+
+        /* Rating Adjustments */
+        .rating:not(:checked) > label {
+          font-size: 24px;
+          /* Maintain visible stars with smaller size */
+        }
+
+        /* Product Card Adjustments */
+        .container .row {
+          padding: 1.2rem;
+          /* Slight padding reduction */
+        }
+
+        .row img {
+          max-width: 150px;
+          /* Reduce image size moderately */
+          height: auto;
+        }
+
+        .row h4,
+        .row h5 {
+          font-size: 16px;
+        }
+
+        .row p {
+          font-size: 14px;
+        }
+
+        .rating label {
+          font-size: 24px;
+          /* Adjust rating star size */
+        }
+      }
+
+      @media (max-width: 576px) {
+        /* Further Font and Element Adjustments for Extra Small Screens */
+        body {
+          font-size: 14px;
+        }
+
+        h1,
+        h4,
+        h5 {
+          font-size: 16px;
+        }
+
+        p {
+          font-size: 13px;
+        }
+
+        .navbar .btn {
+          padding: 0.4rem 0.7rem;
+          font-size: 12px;
+        }
+
+        .navbar .input-group input {
+          font-size: 13px;
+          padding: 0.3rem;
+        }
+
+        .navbar .input-group button {
+          font-size: 13px;
+          padding: 0.3rem;
+        }
+
+        .row img {
+          max-width: 120px;
+          /* Further adjust image size */
+          height: auto;
+        }
+
+        .row h4,
+        .row h5 {
+          font-size: 14px;
+        }
+
+        .row p {
+          font-size: 12px;
+        }
+
+        .rating label {
+          font-size: 22px;
+          /* Adjust rating star size */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- new Nav Bar -->
+    {% load static %}
+    <nav class="navbar navbar-expand-lg">
+      <div class="nav-container-first">
+        <div class="logo">
+          <a href="{% url 'homePage' %}">
+            <img src="{% static '/img/logo.png' %}" alt="logo" />
+          </a>
+        </div>
+        <div class="searchbar">
+          <input type="text" name="" id="" />
+
+          <div class="search_icon">
+            <a href="">
+              <img
+                src="{% static '/img/magnifying-glass.png' %}"
+                alt="search-con"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="login">
+          <div class="seller">
+            <a href="{% url 'sellerLogin' %}">
+              <button type="submit">Become a Seller</button>
+            </a>
+          </div>
+          <div class="cart-logo">
+            <a href="{% url 'cartPage' %}">
+              <img src="{% static '/img/shopping-bag.png' %}" alt="cart-logo" />
+            </a>
+          </div>
+          {% if ob.user_flag == 'true'%}
+          <div class="d-flex align-items-center">
+            <div>
+              <p style="color: #fff; font-size: 1.3rem">{{ob.username}}</p>
+            </div>
+            <div
+              class="ulogin dropdown position-relative d-flex align-items-center"
+            >
+              <button class="btn btn-link pl-3" style="cursor: pointer">
+                <i
+                  class="fa-solid fa-user"
+                  style="font-size: 2.5rem; color: #fff"
+                ></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" id="dropdown2">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    id="dropdown1"
+                    href="{% url 'user_Profile' %}"
+                    ><i class="fa-solid fa-user"></i> Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'myOrders' %}"
+                    ><i class="fa-solid fa-box"></i> My Orders</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'whishlist' %}"
+                    ><i class="fa-solid fa-heart"></i> Wishlist</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'logout' %}"
+                    ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {% else %}
+          <div class="login-btn">
+            <a href="{% url 'userLogin' %}">
+              <button type="submit">Login</button>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    <!-- new Nav Bar End -->
+    <div class="container-fluid">
+      <div class="text-center my-4">
+        <h1 class="fw-bold">MY Orders</h1>
+      </div>
+      <div class="container">
+        {% for i in b %}
+        <div class="row border rounded p-3 mb-4">
+          <div class="col-md-3 col-12 text-center">
+            <img
+              src="data:image/png;base64,{{ i.image_data }}"
+              alt="Product Image"
+              class="img-fluid rounded"
+            />
+          </div>
+          <div class="col-md-9 col-12">
+            <div class="">
+              <h4 class="fw-bold">Delivered date: 29-11-2024</h4>
+              <h6>{{i.Product_name}}</h6>
+            </div>
+            <p class="mt-2">
+              {{i.Description}} Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet
+              consectetur, adipisicing elit. Provident nam eos numquam accusamus
+              vel at ex quasi error, cupiditate hic deleniti sint natus itaque
+              animi non? Repudiandae, officia consequatur. Cupiditate.
+            </p>
+            <div class="mt-2 og">
+              <label class="fw-bold">Rate the product:</label>
+              <div class="rating">
+                <input value="5" name="rate" id="star5" type="radio" />
+                <label title="text" for="star5"></label>
+                <input value="4" name="rate" id="star4" type="radio" />
+                <label title="text" for="star4"></label>
+                <input
+                  value="3"
+                  name="rate"
+                  id="star3"
+                  type="radio"
+                  checked=""
+                />
+                <label title="text" for="star3"></label>
+                <input value="2" name="rate" id="star2" type="radio" />
+                <label title="text" for="star2"></label>
+                <input value="1" name="rate" id="star1" type="radio" />
+                <label title="text" for="star1"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

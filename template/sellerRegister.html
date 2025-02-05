@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Login</title>
+
+    <style>
+      /* POPPINS FONT */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+      .wrapper {
+        background: #ececec;
+        padding: 0 20px 0 20px;
+      }
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .side-image {
+        background-image: url("images/2.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px 0 0 10px;
+        position: relative;
+      }
+      .row {
+        width: 900px;
+        height: 600px;
+        border-radius: 10px;
+        background: #fff;
+        padding: 0px;
+        box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+      }
+      .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .text p {
+        color: #fff;
+        font-size: 20px;
+      }
+      i {
+        font-weight: 400;
+        font-size: 15px;
+      }
+      .right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      .input-box {
+        width: 330px;
+        box-sizing: border-box;
+      }
+      img {
+        width: 35px;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+      }
+      .input-box header {
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 45px;
+      }
+      .input-field {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 0 10px 0 10px;
+      }
+      .input {
+        height: 45px;
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        outline: none;
+        margin-bottom: 20px;
+        color: #40414a;
+      }
+      .input-box .input-field label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+      .input-field input:focus ~ label {
+        top: -10px;
+        font-size: 13px;
+      }
+      .input-field input:valid ~ label {
+        top: -10px;
+        font-size: 13px;
+        color: #5d5076;
+      }
+      .input-field .input:focus,
+      .input-field .input:valid {
+        border-bottom: 1px solid #743ae1;
+      }
+      .submit {
+        border: none;
+        outline: none;
+        height: 45px;
+        background: #ececec;
+        border-radius: 5px;
+        transition: 0.4s;
+      }
+      .submit:hover {
+        background: rgba(37, 95, 156, 0.937);
+        color: #fff;
+      }
+      .signin {
+        text-align: center;
+        font-size: small;
+        margin-top: 25px;
+      }
+      span a {
+        text-decoration: none;
+        font-weight: 700;
+        color: #000;
+        transition: 0.5s;
+      }
+      span a:hover {
+        text-decoration: underline;
+        color: #000;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .side-image {
+          border-radius: 10px 10px 0 0;
+          display: none;
+        }
+        img {
+          width: 35px;
+          position: absolute;
+          top: 20px;
+          left: 47%;
+        }
+        .text {
+          position: absolute;
+          top: 70%;
+          text-align: center;
+        }
+        .text p,
+        i {
+          font-size: 16px;
+        }
+        .row {
+          max-width: 420px;
+          width: 100%;
+        }
+      }
+
+      .error-text {
+        color: red; /* Display error messages in red */
+        font-size: 12px; /* Smaller font for error messages */
+        height: 15px; /* Reserve space for error messages */
+        display: block; /* Ensure the error message always occupies its space */
+        margin-top: -20px; /* Adjust spacing if necessary */
+        margin-bottom: 10px; /* Adjust spacing to align input fields properly */
+        overflow: hidden; /* Prevent content overflow */
+      }
+    </style>
+  </head>
+  <body>
+    {% load static %}
+    <div class="wrapper">
+      <div class="container main">
+        <div class="row">
+          <div class="col-md-6 side-image">
+            <!-------------      image     ------------->
+
+            <img
+              src="{% static '/img/sel.avif' %}"
+              alt=""
+              style="height: 80%; width: 100%"
+            />
+            <!-- <div class="text">
+                    <p>Join the community of developers <i>- ludiflex</i></p>
+                </div>
+                 -->
+          </div>
+
+          <form
+            method="post"
+            class="col-md-6 right"
+            id="forms"
+            onsubmit="return validation()"
+          >
+            {% csrf_token %}
+            <div class="input-box">
+              <header>Create account</header>
+              <div class="input-field">
+                <input
+                  type="UserName"
+                  class="input"
+                  id="user"
+                  name="seller_name"
+                  required=""
+                />
+                <label for="user">UserName</label>
+                <span id="name_error" class="error-text"></span>
+              </div>
+              <div class="input-field">
+                <input
+                  type="text"
+                  class="input"
+                  id="email"
+                  name="seller_email"
+                  required=""
+                  autocomplete="off"
+                />
+                <label for="email">Email</label>
+                <span id="email_error" class="error-text">{{emailDup}}</span>
+              </div>
+
+              <div class="input-field">
+                <input
+                  type="text"
+                  class="input"
+                  id="address"
+                  name="seller_address"
+                  required=""
+                />
+                <label for="address">Address</label>
+                <span id="address_error" class="error-text"></span>
+              </div>
+              <div class="input-field">
+                <input
+                  type="text"
+                  class="input"
+                  id="shopname"
+                  name="shop_name"
+                  required=""
+                />
+                <label for="shopname">Shop Name</label>
+                <span id="shopname_error" class="error-text"></span>
+              </div>
+              <div class="input-field">
+                <input
+                  type="password"
+                  class="input"
+                  id="pass"
+                  name="seller_password"
+                  required=""
+                />
+                <label for="pass">Password</label>
+                <span id="password_error" class="error-text"></span>
+              </div>
+              <div class="input-field">
+                <input type="password" class="input" id="cpass" required="" />
+                <label for="cpass">Confirm Password</label>
+                <span id="confirm_password_error" class="error-text"></span>
+              </div>
+              <div class="input-field">
+                <input type="submit" class="submit" value="Sign Up" />
+              </div>
+              <div class="signin mt-0">
+                <span
+                  >Already have an account?
+                  <a href="{% url 'sellerLogin' %}">Log in here</a></span
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function validation() {
+      const name = document.getElementById("user").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const password = document.getElementById("pass").value.trim();
+      const cpassword = document.getElementById("cpass").value.trim();
+      const shopname = document.getElementById("shopname").value.trim();
+
+      const name_error = document.getElementById("name_error");
+      const email_error = document.getElementById("email_error");
+      const address_error = document.getElementById("address_error");
+      const password_error = document.getElementById("password_error");
+      const confirm_password_error = document.getElementById(
+        "confirm_password_error"
+      );
+      const shopname_error = document.getElementById("shopname_error");
+
+      // Clear previous error messages
+      name_error.textContent = "";
+      email_error.textContent = "";
+      address_error.textContent = "";
+      password_error.textContent = "";
+      confirm_password_error.textContent = "";
+
+      let isValid = true;
+
+      // Name validation
+      if (name === "") {
+        isValid = false;
+        name_error.textContent = "Please enter your name.";
+      }
+      if (shopname === "") {
+        isValid = false;
+        shopname_error.textContent = "Please enter your shop name";
+      }
+
+      // Email validation
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (email === "") {
+        isValid = false;
+        email_error.textContent = "Please Enter Your Email";
+      } else if (!emailPattern.test(email)) {
+        isValid = false;
+        email_error.textContent = "Invalid email format.";
+      }
+
+      // Address validation
+      const addressPattern = /^[a-zA-Z0-9\s,.-/]{5,100}$/;
+      if (address === "") {
+        isValid = false;
+        address_error.textContent = "Please Enter Your Address";
+      } else if (!addressPattern.test(address)) {
+        isValid = false;
+        address_error.textContent =
+          "Invalid address format. Use letters, numbers, spaces, and , . - /.";
+      }
+
+      // Password validation
+      const passwordPattern =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (password === "") {
+        isValid = false;
+        password_error.textContent = "Please Enter Your Password";
+      } else if (!passwordPattern.test(password)) {
+        isValid = false;
+        password_error.textContent = "passwod format error";
+      }
+
+      // Confirm password validation
+      if (cpassword === "") {
+        isValid = false;
+        confirm_password_error.textContent = "Confirm Password is required.";
+      } else if (password !== cpassword) {
+        isValid = false;
+        confirm_password_error.textContent = "Passwords do not match.";
+      }
+
+      return isValid;
+    }
+
+    // document
+    //   .querySelector(".submit")
+    //   .addEventListener("click", function (event) {
+    //     event.preventDefault();
+
+    //     if (validation()) {
+    //       alert("You have successfully submitted the form!");
+    //     }
+    //   });
+  </script>
+</html>
